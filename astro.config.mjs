@@ -1,15 +1,11 @@
-// @ts-check
+// astro.config.mjs
 import { defineConfig } from 'astro/config';
-
-import vue from '@astrojs/vue';
-
-import tailwindcss from '@tailwindcss/vite';
+import tailwind from "@astrojs/tailwind";
+import vue from "@astrojs/vue";
+import mdx from "@astrojs/mdx";
 
 // https://astro.build/config
 export default defineConfig({
-  integrations: [vue()],
-
-  vite: {
-    plugins: [tailwindcss()]
-  }
+  // Les trois intégrations doivent être ici
+  integrations: [tailwind(), vue(), mdx()], 
 });
