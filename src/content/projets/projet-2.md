@@ -3,7 +3,7 @@ title: "Site événementiel - Salon de l'Agriculture"
 description: "Projet académique de création d'un site web événementiel pour la gestion du Salon de l'Agriculture avec système multi-rôles"
 technologies: ["Node.js", "Express", "Sequelize", "PostgreSQL", "HTML/CSS", "JavaScript", "Bootstrap"]
 date: 2024-04-04
-image: "/images/projets/salon-agriculture.jpg"
+image: "/src/assets/salon_agriculutre.png"
 githubUrl: "https://github.com/baptisteDULIEUX/salon-de-l-agriculture/tree/main"
 featured: false
 ordre: 2

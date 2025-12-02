@@ -3,7 +3,7 @@ title: "LOL-COACH - Prédiction de winrate et coaching IA"
 description: "Modèle de Machine Learning pour prédire le taux de victoire d'une composition de champions League of Legends avec IA générative pour le coaching stratégique"
 technologies: ["Python", "Pandas", "NumPy", "Scikit-learn", "LightGBM", "Mistral API", "API Riot Games"]
 date: 2024-12-02
-image: "/images/projets/lol-coach.jpg"
+image: "/src/assets/neural.webp"
 featured: false
 ordre: 4
 ---
