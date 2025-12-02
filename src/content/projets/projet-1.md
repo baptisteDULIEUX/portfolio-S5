@@ -3,7 +3,7 @@ title: "Stage S4 - Application de gestion RH"
 description: "Développement d'une application web full-stack pour la gestion des ressources humaines chez SAS Financière The Box"
 technologies: ["Vue.js 2", "Quasar", "Node.js", "PostgreSQL", "Sequelize", "Swagger", "Ubuntu Server", "Raspberry Pi"]
 date: 2024-06-15
-image: "/src/assets/image_stage.png"
+image: "../../assets/image_stage.png"
 featured: true
 ordre: 1
 ---
