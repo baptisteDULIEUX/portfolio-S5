@@ -5,12 +5,14 @@ import { getCollection } from 'astro:content';
 export async function getStaticPaths() {
   const frontend = await getCollection('frontend');
   const backend = await getCollection('backend');
+  const langages = await getCollection('langages');
   const outils = await getCollection('outils');
   const softskills = await getCollection('softskills');
   
   const allCompetences = [
     ...frontend.map(c => ({ ...c, categoryName: 'Frontend', categoryIcon: '🎨' })),
     ...backend.map(c => ({ ...c, categoryName: 'Backend & Base de données', categoryIcon: '⚙️' })),
+    ...langages.map(c => ({ ...c, categoryName: 'Langages de programmation', categoryIcon: '💻' })),
     ...outils.map(c => ({ ...c, categoryName: 'Outils / Tools', categoryIcon: '🔧' })),
     ...softskills.map(c => ({ ...c, categoryName: 'Soft Skills', categoryIcon: '☀️' })),
   ];

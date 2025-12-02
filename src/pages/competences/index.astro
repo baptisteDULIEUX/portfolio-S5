@@ -7,6 +7,7 @@ const competences = await getCollection('competences');
 // Grouper par catégorie
 const frontend = competences.filter(c => c.data.category === 'frontend').sort((a, b) => a.data.ordre - b.data.ordre);
 const backend = competences.filter(c => c.data.category === 'backend').sort((a, b) => a.data.ordre - b.data.ordre);
+const langages = competences.filter(c => c.data.category === 'langages').sort((a, b) => a.data.ordre - b.data.ordre);
 const tools = competences.filter(c => c.data.category === 'tools').sort((a, b) => a.data.ordre - b.data.ordre);
 const softSkills = competences.filter(c => c.data.category === 'soft-skills').sort((a, b) => a.data.ordre - b.data.ordre);
 
@@ -41,11 +42,48 @@ const levelLabels = {
         </p>
       </div>
 
+      <!-- Langages de programmation -->
+      {langages.length > 0 && (
+        <div class="mb-16">
+          <h2 class="text-3xl font-bold text-gray-900 mb-8 flex items-center">
+            <span class="text-4xl mr-3">💻</span>
+            Langages de programmation
+          </h2>
+          <div class="grid md:grid-cols-2 lg:grid-cols-3 gap-6">
+            {langages.map(async (comp) => {
+              const { Content } = await comp.render();
+              return (
+                <div class="bg-white rounded-lg shadow-md p-6 hover:shadow-lg transition-shadow">
+                  <div class="flex items-start justify-between mb-4">
+                    <div class="flex items-center">
+                      {comp.data.icon && (
+                        <span class="text-3xl mr-3">{comp.data.icon}</span>
+                      )}
+                      <h3 class="text-xl font-bold text-gray-900">
+                        {comp.data.title}
+                      </h3>
+                    </div>
+                    {comp.data.level && (
+                      <span class={`px-3 py-1 rounded-full text-xs font-semibold ${levelColors[comp.data.level]}`}>
+                        {levelLabels[comp.data.level]}
+                      </span>
+                    )}
+                  </div>
+                  <div class="prose prose-sm max-w-none text-gray-600">
+                    <Content />
+                  </div>
+                </div>
+              );
+            })}
+          </div>
+        </div>
+      )}
+
       <!-- Front-end -->
       {frontend.length > 0 && (
         <div class="mb-16">
           <h2 class="text-3xl font-bold text-gray-900 mb-8 flex items-center">
-            <span class="text-4xl mr-3">💻</span>
+            <span class="text-4xl mr-3">🎨</span>
             Front-end
           </h2>
           <div class="grid md:grid-cols-2 lg:grid-cols-3 gap-6">
@@ -83,7 +121,7 @@ const levelLabels = {
         <div class="mb-16">
           <h2 class="text-3xl font-bold text-gray-900 mb-8 flex items-center">
             <span class="text-4xl mr-3">⚙️</span>
-            Back-end
+            Back-end & Base de données
           </h2>
           <div class="grid md:grid-cols-2 lg:grid-cols-3 gap-6">
             {backend.map(async (comp) => {

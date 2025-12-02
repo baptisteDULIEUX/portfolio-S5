@@ -19,7 +19,7 @@ const competencesCollection = defineCollection({
   type: 'content',
   schema: z.object({
     title: z.string(),
-    category: z.enum(['frontend', 'backend', 'tools', 'soft-skills']),
+    category: z.enum(['frontend', 'backend', 'tools', 'soft-skills','langages']),
     level: z.enum(['debutant', 'intermediaire', 'avance', 'expert']).optional(),
     icon: z.string().optional(),
     ordre: z.number().default(999),
