@@ -171,7 +171,7 @@ Le TUI permet de choisir parmi plusieurs stratégies :
 
 En tant que **développeur et testeur**, j'ai contribué à plusieurs aspects du projet :
 
-### 1. Tests unitaires (90% de mon temps)
+### 1. Tests unitaires (90%)
 **Responsabilité principale** du projet.
 
 **Réalisations** :
@@ -195,21 +195,21 @@ En tant que **développeur et testeur**, j'ai contribué à plusieurs aspects du
 - Détection précoce des bugs
 - Facilitation du refactoring
 
-### 2. Règles élémentaires du jeu (10% de mon temps)
+### 2. Règles élémentaires du jeu (10%)
 Participation au développement de la **logique de base** :
 
 - Implémentation de règles de mouvement simples
 - Détection et correction de bugs dans le code de mes coéquipiers
 - Revue de code et suggestions d'amélioration
 
-### 3. Règles complexes (15% de mon temps)
+### 3. Règles complexes (15%)
 Collaboration avec **Marvyn Levin** et **Cédric Colin** :
 
 - Co-développement de la **règle Oshi**
 - Co-développement de la **règle Sumo**
 - Tests et validation de ces variantes
 
-### 4. Rapports et documentation (30% de mon temps)
+### 4. Rapports et documentation (30%)
 Support à l'équipe sur la **partie rédactionnelle** :
 
 - ✅ Rédaction de sections du rapport technique (37 pages)

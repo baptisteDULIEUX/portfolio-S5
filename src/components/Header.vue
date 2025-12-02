@@ -19,7 +19,7 @@
           </li>
           <li>
             <a 
-              href="/cv/CV_Baptiste_Dulieux.pdf" 
+              href="/cv/CV_Baptiste_DULIEUX.pdf" 
               download
               class="bg-primary-600 text-white px-4 py-2 rounded-lg hover:bg-primary-700 transition font-medium"
             >
