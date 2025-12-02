@@ -3,7 +3,7 @@ title: "TrifleConsole - Jeu Kamisado avec IA"
 description: "Implémentation complète du jeu de plateau Kamisado en Java avec interface console/graphique et intelligence artificielle (Minimax + heuristique)"
 technologies: ["Java", "JavaFX", "Boardifier", "Minimax", "JUnit", "Mockito", "MVC"]
 date: 2024-06-15
-image: "/src/assets/triffle.png"
+image: "/images/triffle.png"
 githubUrl: "https://github.com/baptisteDULIEUX/trifle.git"
 featured: false
 ordre: 5

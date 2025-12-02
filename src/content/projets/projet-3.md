@@ -3,7 +3,7 @@ title: "SAMSOUL - Système de détection d'état second"
 description: "Projet IoT de détection d'état second via capteurs Arduino et tests de réaction, avec architecture distribuée et intelligence artificielle"
 technologies: ["Vue.js 3", "Arduino", "Java", "Python", "Node.js", "MongoDB", "Docker", "IA/ML"]
 date: 2024-12-02
-image: "/src/assets/arduinos.webp"
+image: "/images/arduinos.webp"
 featured: false
 ordre: 3
 ---
