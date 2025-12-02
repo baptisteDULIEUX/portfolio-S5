@@ -1,0 +1,168 @@
+---
+import Layout from '../../layouts/Layout.astro';
+import { getCollection } from 'astro:content';
+
+export async function getStaticPaths() {
+  const frontend = await getCollection('frontend');
+  const backend = await getCollection('backend');
+  const outils = await getCollection('outils');
+  const softskills = await getCollection('softskills');
+  
+  const allCompetences = [
+    ...frontend.map(c => ({ ...c, categoryName: 'Frontend', categoryIcon: '🎨' })),
+    ...backend.map(c => ({ ...c, categoryName: 'Backend & Base de données', categoryIcon: '⚙️' })),
+    ...outils.map(c => ({ ...c, categoryName: 'Outils / Tools', categoryIcon: '🔧' })),
+    ...softskills.map(c => ({ ...c, categoryName: 'Soft Skills', categoryIcon: '☀️' })),
+  ];
+  
+  return allCompetences.map((competence) => ({
+    params: { slug: competence.slug },
+    props: { competence },
+  }));
+}
+
+const { competence } = Astro.props;
+const { Content } = await competence.render();
+
+const levelLabels = {
+  debutant: 'Débutant',
+  intermediaire: 'Intermédiaire',
+  avance: 'Avancé',
+  expert: 'Expert',
+};
+
+const levelColors = {
+  debutant: 'bg-gray-100 text-gray-700',
+  intermediaire: 'bg-blue-100 text-blue-700',
+  avance: 'bg-primary-100 text-primary-700',
+  expert: 'bg-yellow-100 text-yellow-700',
+};
+---
+
+<Layout 
+  title={`${competence.data.title} - Baptiste Dulieux`}
+  description={`Compétence en ${competence.data.title} - Niveau ${levelLabels[competence.data.level]}`}
+>
+  <article class="pt-32 pb-20 px-4">
+    <div class="container mx-auto max-w-4xl">
+      <!-- Retour -->
+      <a 
+        href="/competences" 
+        class="inline-flex items-center text-primary-600 hover:text-primary-700 mb-8 font-medium"
+      >
+        <svg class="w-5 h-5 mr-2" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+          <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M10 19l-7-7m0 0l7-7m-7 7h18"></path>
+        </svg>
+        Retour aux compétences
+      </a>
+
+      <!-- En-tête -->
+      <header class="mb-12">
+        <div class="flex items-center gap-3 mb-4">
+          <span class="text-5xl">{competence.data.icon}</span>
+          <span class="inline-block bg-gray-100 text-gray-700 px-4 py-2 rounded-full text-sm font-semibold">
+            {competence.categoryIcon} {competence.categoryName}
+          </span>
+        </div>
+        
+        <h1 class="text-5xl font-bold text-gray-900 mb-4">
+          {competence.data.title}
+        </h1>
+        
+        <div class="flex flex-wrap items-center gap-4 mb-6">
+          <span class={`inline-flex items-center px-4 py-2 rounded-lg text-base font-semibold ${levelColors[competence.data.level]}`}>
+            <svg class="w-5 h-5 mr-2" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+              <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 12l2 2 4-4M7.835 4.697a3.42 3.42 0 001.946-.806 3.42 3.42 0 014.438 0 3.42 3.42 0 001.946.806 3.42 3.42 0 013.138 3.138 3.42 3.42 0 00.806 1.946 3.42 3.42 0 010 4.438 3.42 3.42 0 00-.806 1.946 3.42 3.42 0 01-3.138 3.138 3.42 3.42 0 00-1.946.806 3.42 3.42 0 01-4.438 0 3.42 3.42 0 00-1.946-.806 3.42 3.42 0 01-3.138-3.138 3.42 3.42 0 00-.806-1.946 3.42 3.42 0 010-4.438 3.42 3.42 0 00.806-1.946 3.42 3.42 0 013.138-3.138z"></path>
+            </svg>
+            Niveau : {levelLabels[competence.data.level]}
+          </span>
+        </div>
+
+        <!-- Barre de progression visuelle du niveau -->
+        <div class="mb-6">
+          <div class="w-full bg-gray-200 rounded-full h-3 overflow-hidden">
+            <div 
+              class="h-full rounded-full transition-all duration-500 {
+                competence.data.level === 'debutant' ? 'bg-gray-500 w-1/4' :
+                competence.data.level === 'intermediaire' ? 'bg-blue-500 w-1/2' :
+                competence.data.level === 'avance' ? 'bg-primary-500 w-3/4' :
+                'bg-yellow-500 w-full'
+              }"
+            ></div>
+          </div>
+        </div>
+      </header>
+
+      <!-- Contenu de la compétence (Markdown) -->
+      <div class="prose prose-lg max-w-none prose-headings:text-gray-900 prose-a:text-primary-600 prose-strong:text-gray-900 mb-12">
+        <Content />
+      </div>
+
+      <!-- Section supplémentaire (optionnelle) -->
+      <div class="bg-primary-50 rounded-lg p-8 mb-12">
+        <h2 class="text-2xl font-bold text-gray-900 mb-4">💡 Pourquoi cette compétence ?</h2>
+        <p class="text-gray-700 leading-relaxed">
+          Cette compétence fait partie de ma boîte à outils en tant que développeur. 
+          Je continue à l'améliorer et à l'utiliser régulièrement dans mes projets.
+        </p>
+      </div>
+
+      <!-- Navigation -->
+      <div class="mt-16 pt-8 border-t border-gray-200">
+        <div class="flex justify-between items-center">
+          <a 
+            href="/competences" 
+            class="inline-flex items-center text-primary-600 hover:text-primary-700 font-medium"
+          >
+            <svg class="w-5 h-5 mr-2" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+              <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M10 19l-7-7m0 0l7-7m-7 7h18"></path>
+            </svg>
+            Toutes les compétences
+          </a>
+          
+          <a 
+            href="/contact" 
+            class="bg-primary-600 text-white px-6 py-3 rounded-lg hover:bg-primary-700 transition font-medium"
+          >
+            Me contacter
+          </a>
+        </div>
+      </div>
+    </div>
+  </article>
+</Layout>
+
+<style>
+  /* Styles personnalisés pour le contenu Markdown */
+  :global(.prose h2) {
+    @apply text-3xl font-bold mt-12 mb-6;
+  }
+  
+  :global(.prose h3) {
+    @apply text-2xl font-semibold mt-8 mb-4;
+  }
+  
+  :global(.prose p) {
+    @apply mb-4 leading-relaxed;
+  }
+  
+  :global(.prose ul) {
+    @apply mb-6 list-disc pl-6;
+  }
+  
+  :global(.prose li) {
+    @apply mb-2;
+  }
+  
+  :global(.prose code) {
+    @apply bg-gray-100 px-2 py-1 rounded text-sm;
+  }
+  
+  :global(.prose pre) {
+    @apply bg-gray-900 text-gray-100 p-4 rounded-lg overflow-x-auto;
+  }
+  
+  :global(.prose strong) {
+    @apply font-semibold;
+  }
+</style>
