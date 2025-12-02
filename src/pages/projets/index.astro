@@ -35,11 +35,7 @@ const projetsTries = projets.sort((a, b) => a.data.ordre - b.data.ordre);
                   alt={projet.data.title}
                   class="w-full h-full object-cover"
                 />
-                {projet.data.featured && (
-                  <span class="absolute top-4 right-4 bg-yellow-400 text-gray-900 px-3 py-1 rounded-full text-sm font-semibold">
-                    ⭐ Projet phare
-                  </span>
-                )}
+                
               </div>
             ) : (
               <div class="h-48 bg-gradient-to-br from-primary-400 to-primary-600 flex items-center justify-center">
